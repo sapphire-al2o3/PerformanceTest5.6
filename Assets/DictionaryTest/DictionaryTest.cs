@@ -3,8 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
+public enum EnumType
+{
+	A,
+	B,
+	C,
+	D,
+	E
+}
+
+public class EnumTypeComparer : IEqualityComparer<EnumType>
+{
+	public bool Equals( EnumType x, EnumType y )
+	{
+		return x == y;
+	}
+
+	public int GetHashCode( EnumType obj )
+	{
+		return ( int )obj;
+	}
+}
+
 public class DictionaryTest : MonoBehaviour
 {
+
 	void Start()
 	{
 		Dictionary<int, int> dic = new Dictionary<int, int>();
@@ -39,5 +62,19 @@ public class DictionaryTest : MonoBehaviour
 			sum += pair.Value;
 		}
 		Profiler.EndSample();
+
+		// 0.6KB
+		var comp = new EnumTypeComparer();
+		Profiler.BeginSample("dictionary<EnumType, int>");
+		Dictionary<EnumType, int> dic2 = new Dictionary<EnumType, int>(comp);
+		Profiler.EndSample();
+
+		// 488byte
+		Profiler.BeginSample("dictionary<int, int>");
+		Dictionary<int, int> dic1 = new Dictionary<int, int>();
+		Profiler.EndSample();
+
+
+
 	}
 }
