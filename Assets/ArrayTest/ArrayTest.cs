@@ -58,6 +58,11 @@ public class ArrayTest : MonoBehaviour
             }
         }
         Profiler.EndSample();
+
+		// 32byte
+		Profiler.BeginSample("List<int>");
+		List<int> list0 = new List<int>();
+		Profiler.EndSample();
     }
 
 }
