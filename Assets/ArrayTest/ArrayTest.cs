@@ -60,23 +60,27 @@ public class ArrayTest : MonoBehaviour
         Profiler.EndSample();
 
 		// 32byte
+		// int[] _items
+		// int _size
+		// int _version
+		// (Object _syncRoot)
 		Profiler.BeginSample("List<int>");
-		List<int> list0 = new List<int>();
+		List<int> list = new List<int>();
 		Profiler.EndSample();
 
 		// 76byte
 		Profiler.BeginSample("List<int> 1");
 		List<int> list1 = new List<int>(1);
-//		list1.Add(1);
 		Profiler.EndSample();
 
 		// 88byte
-		// 4つまではメモリ確保されない
+		// デフォルトのキャパシティが4なので4つまではメモリ確保されない
 		Profiler.BeginSample("List<int> 2");
 		List<int> list2 = new List<int>();
 		list2.Add(1);
 		list2.Add(2);
 		list2.Add(3);
+		list2.Add(4);
 		Profiler.EndSample();
 
 		// 88byte
