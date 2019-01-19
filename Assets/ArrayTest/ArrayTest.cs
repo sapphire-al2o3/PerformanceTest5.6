@@ -68,6 +68,7 @@ public class ArrayTest : MonoBehaviour
         Profiler.EndSample();
 
         // 76byte
+        // 32(Listのサイズ) + 44(int[1]のサイズ)
         Profiler.BeginSample("List<int>(1)");
         list = new List<int>(1);
         Profiler.EndSample();
