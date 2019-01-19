@@ -17,10 +17,9 @@ public class ArrayTest : MonoBehaviour
         int[] a = new int[1];
         Profiler.EndSample();
 
-
         // 440 byte
         Profiler.BeginSample("int[]");
-        int [] array = new int[10 * 10];
+        int[] array = new int[10 * 10];
 
         for (int i = 0; i < 10; i++)
         {
@@ -59,37 +58,34 @@ public class ArrayTest : MonoBehaviour
         }
         Profiler.EndSample();
 
-		// 32byte
-		// int[] _items
-		// int _size
-		// int _version
-		// (Object _syncRoot)
-		Profiler.BeginSample("List<int>");
-		List<int> list = new List<int>();
-		Profiler.EndSample();
+        // 32byte
+        // int[] _items
+        // int _size
+        // int _version
+        // (Object _syncRoot)
+        Profiler.BeginSample("List<int>");
+        List<int> list = new List<int>();
+        Profiler.EndSample();
 
-		// 76byte
-		Profiler.BeginSample("List<int> 1");
-		List<int> list1 = new List<int>(1);
-		Profiler.EndSample();
+        // 76byte
+        Profiler.BeginSample("List<int>(1)");
+        list = new List<int>(1);
+        Profiler.EndSample();
 
-		// 88byte
-		// デフォルトのキャパシティが4なので4つまではメモリ確保されない
-		Profiler.BeginSample("List<int> 2");
-		List<int> list2 = new List<int>();
-		list2.Add(1);
-		list2.Add(2);
-		list2.Add(3);
-		list2.Add(4);
-		Profiler.EndSample();
+        // 88byte
+        // デフォルトのキャパシティが4なので4つまではメモリ確保されない
+        Profiler.BeginSample("List<int> 2");
+        List<int> list2 = new List<int>();
+        list2.Add(1);
+        list2.Add(2);
+        list2.Add(3);
+        list2.Add(4);
+        Profiler.EndSample();
 
-		// 88byte
-		Profiler.BeginSample("List<int> 3");
-		List<int> list3 = new List<int>(4);
-		list3.Add(1);
-		list3.Add(2);
-		list3.Add(3);
-		Profiler.EndSample();
+        // 88byte
+        Profiler.BeginSample("List<int>(4)");
+        List<int> list3 = new List<int>(4);
+        Profiler.EndSample();
     }
 
 }
