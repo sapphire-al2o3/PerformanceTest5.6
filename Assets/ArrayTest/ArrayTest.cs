@@ -87,6 +87,12 @@ public class ArrayTest : MonoBehaviour
         Profiler.BeginSample("List<int>(4)");
         List<int> list3 = new List<int>(4);
         Profiler.EndSample();
+
+        // 78.2KB
+        // 32 + 40 + 10000 * 8
+        Profiler.BeginSample("List<string>(10000)");
+        List<string> list4 = new List<string>(10000);
+        Profiler.EndSample();
     }
 
 }
