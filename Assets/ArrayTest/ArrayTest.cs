@@ -8,12 +8,12 @@ public class ArrayTest : MonoBehaviour
     void Start()
     {
         // 40 byte
-        Profiler.BeginSample("test 2");
+        Profiler.BeginSample("int[0]");
         int[] b = new int[0];
         Profiler.EndSample();
 
         // 44 byte
-        Profiler.BeginSample("test");
+        Profiler.BeginSample("int[1]");
         int[] a = new int[1];
         Profiler.EndSample();
 
@@ -56,6 +56,16 @@ public class ArrayTest : MonoBehaviour
                 array1[i][j] = 0;
             }
         }
+        Profiler.EndSample();
+
+        // 40byte
+        Profiler.BeginSample("string[0]");
+        string[] s = new string[0];
+        Profiler.EndSample();
+
+        // 48byte
+        Profiler.BeginSample("string[1]");
+        s = new string[1];
         Profiler.EndSample();
 
         // 32byte
