@@ -27,7 +27,7 @@ public class StringTest : MonoBehaviour
 		}
 		Profiler.EndSample();
 
-		// 196byte
+		// 204byte
 		Profiler.BeginSample("split 3");
 		array = s1.Split(',');
 		Profiler.EndSample();
