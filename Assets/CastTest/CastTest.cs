@@ -36,5 +36,15 @@ public class CastTest : MonoBehaviour
 		Profiler.BeginSample("cast () int -> enum");
 		n = (EnumNum)i;
 		Profiler.EndSample();
+
+		// 20byte
+		Profiler.BeginSample("cast () int -> object");
+		object o = i;
+		Profiler.EndSample();
+
+		// 0byte
+		Profiler.BeginSample("cast () object -> int");
+		i = (int)o;
+		Profiler.EndSample();
 	}
 }
