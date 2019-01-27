@@ -31,5 +31,16 @@ public class StringTest : MonoBehaviour
 		Profiler.BeginSample("split 3");
 		array = s1.Split(',');
 		Profiler.EndSample();
-	}
+        
+        string[] num = { "0", "1", "2", "3", "4", "5" };
+
+        Profiler.BeginSample("concat3");
+        string s = num[0] + num[1] + num[2];
+        Profiler.EndSample();
+
+        Profiler.BeginSample("concat4");
+        s = num[0] + num[1] + num[2] + num[3];
+        s += num[4];
+        Profiler.EndSample();
+    }
 }
