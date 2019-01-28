@@ -20,5 +20,14 @@ public class UnityAPITest : MonoBehaviour
         }
         Profiler.EndSample();
 
+		// 40byte
+		Profiler.BeginSample("GameObject");
+		var go = new GameObject();
+		Profiler.EndSample();
+
+		// 1.7KB
+		Profiler.BeginSample("AddComponent");
+		go.AddComponent<EmptyComponent>();
+		Profiler.EndSample();
     }
 }
