@@ -20,14 +20,31 @@ public class UnityAPITest : MonoBehaviour
         }
         Profiler.EndSample();
 
-		// 40byte
-		Profiler.BeginSample("GameObject");
-		var go = new GameObject();
-		Profiler.EndSample();
+        // 40byte
+        Profiler.BeginSample("GameObject");
+        var go = new GameObject();
+        Profiler.EndSample();
 
-		// 1.7KB
-		Profiler.BeginSample("AddComponent");
-		go.AddComponent<EmptyComponent>();
-		Profiler.EndSample();
+        // 1.7KB
+        Profiler.BeginSample("AddComponent");
+        go.AddComponent<EmptyComponent>();
+        Profiler.EndSample();
+
+        // 0byte
+        Profiler.BeginSample("GetComponent");
+        var e = go.GetComponent<EmptyComponent>();
+        Profiler.EndSample();
+
+        // 0.6KB
+        // 存在しないComponentを取得しようとするとメモリがとられる？
+        Profiler.BeginSample("GetComponent<Rigidbody>");
+        var r = go.GetComponent<Rigidbody>();
+        Profiler.EndSample();
+
+        // 104byte
+        Profiler.BeginSample("GetComponents<Rigidbody>");
+        List<Rigidbody> rigidBodyList = new List<Rigidbody>();
+        go.GetComponents<Rigidbody>(rigidBodyList);
+        Profiler.EndSample();
     }
 }
