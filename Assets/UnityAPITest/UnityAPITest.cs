@@ -46,5 +46,10 @@ public class UnityAPITest : MonoBehaviour
         List<Rigidbody> rigidBodyList = new List<Rigidbody>();
         go.GetComponents<Rigidbody>(rigidBodyList);
         Profiler.EndSample();
+
+        // 0byte
+        Profiler.BeginSample("Find");
+        GameObject.Find("GameObject");
+        Profiler.EndSample();
     }
 }
